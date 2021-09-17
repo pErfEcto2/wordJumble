@@ -22,8 +22,11 @@ bool sayHi() {
     cout << "(and yes, you can get negative score, it's not a bug, it's the feature)" << endl;
     cout << "Do you want to try? (y/n): ";
     cin >> toStart;
+    /*
     if (toStart == "n") return false;
     return true;
+    */
+    return toStart != "n";
 }
 
 void print() {
