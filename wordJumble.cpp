@@ -10,7 +10,7 @@ bool f;
 vector<string> srcWords = {"apple", "markup", "watchdog"};
 string srcWord;
 string outWord;
-int score;
+int score = 0;
 string toStart;
 bool toContinue;
 
@@ -18,6 +18,8 @@ bool sayHi() {
     system("clear");
     cout << "Hi, human!" << endl;
     cout << "I'll show you jumbled word, you have to understand what word it is and write it" << endl;
+    cout << "Also you have the score, +10 points if your guess was right, -5 if wasn't";
+    cout << "(and yes, you can get negative score, it's not a bug, it's the feature)" << endl;
     cout << "Do you want to try? (y/n): ";
     cin >> toStart;
     if (toStart == "n") return false;
@@ -27,6 +29,7 @@ bool sayHi() {
 void print() {
     system("clear");
     cout << "Try to find the premordial word(to exit write \"exit\")" << endl;
+    cout << "Your score is " << score << endl;
     cout << "The encrypted word is " << outWord << endl;
     cout << "Enter your guess ";
     cin >> input;
@@ -41,6 +44,7 @@ int control() {
         string yesNo;
         cin >> yesNo;
         if (yesNo == "n") return 1;
+        score = score + 10;
         return 2; // 2 code to start new iteration
     }
     return 0; // 0 code to continue
@@ -57,7 +61,7 @@ int main() {
         while (!f) {
             print();
             switch (control()) {
-                case 0: f = false; break;
+                case 0: f = false; score = score - 5; break;
                 case 1: f = true; startFlag = false; break;
             }
             break;
