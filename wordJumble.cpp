@@ -7,7 +7,7 @@ using namespace std;
 
 string input;
 bool f;
-vector<string> srcWords = {"apple", "markup", "watchdog"};
+vector<string> srcWords = {"apple", "markup", "watchdog", "orange", "programmer", "hushbringer"};
 string srcWord;
 string outWord;
 int score = 0;
@@ -40,6 +40,7 @@ int control() {
     else if (input == srcWord) {
         system("clear");
         cout << "You're right!" << endl;
+        cout << "Get your 10 points" << endl;
         cout << "Do you want to continue playing?(y/n): ";
         string yesNo;
         cin >> yesNo;
@@ -61,8 +62,14 @@ int main() {
         while (!f) {
             print();
             switch (control()) {
-                case 0: f = false; score = score - 5; break;
-                case 1: f = true; startFlag = false; break;
+                case 0:
+                    f = false;
+                    score = score - 5;
+                    break;
+                case 1:
+                    f = true;
+                    startFlag = false;
+                    break;
             }
             break;
         }
