@@ -6,13 +6,12 @@
 using namespace std;
 
 string input;
-bool f;
 vector<string> srcWords = {"apple", "markup", "watchdog", "orange", "programmer", "hushbringer"};
 string srcWord;
 string outWord;
 int score = 0;
 string toStart;
-bool toContinue;
+bool toContinue = true;
 int hintCounter = 0;
 
 void printRevealedWord(int num) {
@@ -83,15 +82,15 @@ int main() {
         srcWord = srcWords[0];
         outWord = srcWord;
         random_shuffle(outWord.begin(), outWord.end());
-        while (!f) {
+        while (toContinue) {
             print();
             switch (control()) {
                 case 0:
-                    f = false;
+                    toContinue = true;
                     score = score - 5;
                     break;
                 case 1:
-                    f = true;
+                    toContinue = false;
                     startFlag = false;
                     break;
             }
