@@ -35,11 +35,11 @@ bool sayHi() {
     system("clear");
     cout << "Hi, human!" << endl;
     cout << "I'll show you jumbled word, you have to understand what word it is and write it" << endl;
-    cout << "Also you have the score, +10 points if your guess was right, -5 if wasn't";
+    cout << "Also you have the score, +10 points if your guess was right, -5 if wasn't ";
     cout << "(and yes, you can get negative score, it's not a bug, it's the feature)" << endl;
-    cout << "If you were right, but you used hint, to your score would be added 10 - number of hints" << endl;
-    cout << "To show hint write \"hint\"(you can use hints only three times at each game iteration)" << endl;
-    cout << "To exit write \"exit\"" << endl;
+    cout << "If your guess was correct, but you had used hints, your score would be increased by 10 minus <number of hints>" << endl;
+    cout << "To show hint write \"hint\" (you can use hints only three times at each game iteration)" << endl;
+    //cout << "To exit write \"exit\"" << endl;
     cout << "Do you want to try? (write \"n\" to exit or something another to start): ";
     cin >> toStart;
     return toStart != "n";
