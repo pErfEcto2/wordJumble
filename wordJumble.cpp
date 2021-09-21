@@ -34,21 +34,21 @@ void printHint() {
 bool sayHi() {
     system("clear");
     cout << "Hi, human!" << endl;
-    cout << "I'll show you jumbled word, you have to understand what word it is and write it" << endl;
-    cout << "Also you have the score, +10 points if your guess was right, -5 if wasn't ";
-    cout << "(and yes, you can get negative score, it's not a bug, it's the feature)" << endl;
-    cout << "If your guess was correct, but you had used hints, your score would be increased by 10 minus <number of hints>" << endl;
-    cout << "To show hint write \"hint\" (you can use hints only three times at each game iteration)" << endl;
-    //cout << "To exit write \"exit\"" << endl;
-    cout << "Do you want to try? (write \"n\" to exit or something another to start): ";
+    cout << "I'll show you a jumbled word, you have to guess the word and write it" << endl;
+    cout << "You get 10 points if your guess is right and -5 if isn't ";
+    cout << "(and yes, you can get a negative score, it's not a bug, it's a feature)" << endl;
+    cout << "If your guess is correct, but you used hints, your score will be increased by 10 minus <the number of hints>" << endl;
+    cout << "You can use hints only three times for each word" << endl;
+    cout << "Do you want to try? (write \"n\" to exit or any other key to start): ";
     cin >> toStart;
     return toStart != "n";
 }
 
 void print() {
     system("clear");
-    cout << "Try to find the premordial word(to exit write \"exit\")" << endl;
-    cout << "To show hint write \"hint\"" << endl;
+    cout << "Try to unjumble the word" << endl; // print()
+    cout << "To exit write \"exit\"" << endl;
+    cout << "To show a hint write \"hint\"" << endl;
     printHint();
     cout << "Your score is " << score << endl;
     cout << "The encrypted word is " << outWord << endl;
@@ -62,7 +62,7 @@ int control() {
     else if (input == srcWord) {
         system("clear");
         cout << "You're right!" << endl;
-        cout << "Get your 10 points" << endl;
+        cout << "You get 10 points" << endl;
         cout << "Do you want to continue playing?(y/n): ";
         string yesNo;
         cin >> yesNo;
