@@ -5,13 +5,13 @@
 #include "random"
 using namespace std;
 
-string input;
+string input; // string for an input information
 vector<string> srcWords = {"apple", "markup", "watchdog", "orange", "programmer", "hushbringer"};
 string srcWord;
 string outWord;
 int score = 0;
 string toStart;
-bool toContinue = true;
+bool toContinue;
 int hintCounter = 0;
 
 void printRevealedWord(int num) {
@@ -46,7 +46,7 @@ bool sayHi() {
 
 void print() {
     system("clear");
-    cout << "Try to unjumble the word" << endl; // print()
+    cout << "Try to unjumble the word" << endl;
     cout << "To exit write \"exit\"" << endl;
     cout << "To show a hint write \"hint\"" << endl;
     printHint();
@@ -58,43 +58,44 @@ void print() {
 
 int control() {
     if (input == "exit") return 1; // 1 code to exit
-    else if (input == "hint") hintCounter++;
-    else if (input == srcWord) {
-        system("clear");
+    else if (input == "hint") {
+        if (hintCounter < 3) hintCounter++; // increase hintCounter unless hintCounter < 3
+    }
+    else if (input == srcWord) { // if user's guess is right
+        system("clear"); // clear an user's display
         cout << "You're right!" << endl;
-        cout << "You get 10 points" << endl;
+        cout << "You get " << (10 - hintCounter) << " points" << endl;
         cout << "Do you want to continue playing?(y/n): ";
         string yesNo;
         cin >> yesNo;
-        if (yesNo == "n") return 1;
+        if (yesNo == "n") return 1; // 1 code to exit
         score = score + 10 - hintCounter;
         hintCounter = 0;
-        return 2; // 2 code to start new iteration
+        return 2; // 2 code to start a new game iteration
     }
-    return 0; // 0 code to continue
+    return -1; // 0 code to continue
 }
 
 int main() {
     bool startFlag = sayHi();
     while (startFlag) {
-        srand(static_cast<unsigned int>(time(0)));
+        srand(static_cast<unsigned int>(time(0))); // seed the random
         random_shuffle(srcWords.begin(), srcWords.end());
-        srcWord = srcWords[0];
-        outWord = srcWord;
-        random_shuffle(outWord.begin(), outWord.end());
+        srcWord = srcWords[0]; // choose first word from the random shuffled vector
+        outWord = srcWord; // define the copy
+        random_shuffle(outWord.begin(), outWord.end()); // shuffle the copy
+        toContinue = true;
         while (toContinue) {
-            print();
+            print(); // prints gamefield
             switch (control()) {
-                case 0:
-                    toContinue = true;
-                    score = score - 5;
+                case 2: // if user's guess was right
+                    toContinue = false;
                     break;
-                case 1:
+                case 1: // if user wants to exit
                     toContinue = false;
                     startFlag = false;
                     break;
             }
-            break;
         }
     }
     return 0;
