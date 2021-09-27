@@ -14,6 +14,7 @@ string toStart;
 bool toContinue;
 int hintCounter = 0;
 
+
 void printRevealedWord(int num) {
     cout << "Revealed letters: ";
         for (int i = 0; i < num; i++) {
@@ -22,14 +23,6 @@ void printRevealedWord(int num) {
         cout << endl;
 }
 
-void printHint() {
-    if (hintCounter > 3) {
-        printRevealedWord(3);
-    }
-    else if (hintCounter) {
-        printRevealedWord(hintCounter);
-    }
-}
 
 bool sayHi() {
     system("clear");
@@ -49,7 +42,7 @@ void print() {
     cout << "Try to unjumble the word" << endl;
     cout << "To exit write \"exit\"" << endl;
     cout << "To show a hint write \"hint\"" << endl;
-    printHint();
+    printRevealedWord(hintCounter);
     cout << "Your score is " << score << endl;
     cout << "The encrypted word is " << outWord << endl;
     cout << "Enter your guess ";
@@ -73,7 +66,7 @@ int control() {
         hintCounter = 0;
         return 2; // 2 code to start a new game iteration
     }
-    return -1; // 0 code to continue
+    return -1; // -1 code to continue
 }
 
 int main() {
